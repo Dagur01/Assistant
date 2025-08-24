@@ -2,7 +2,7 @@ import { google } from 'googleapis';
 import { NextRequest, NextResponse } from 'next/server';
 import formidable from 'formidable';
 import fs from 'fs';
-import path from 'path';
+
 
 // Disable Next.js's default body parser for this route
 export const config = {
@@ -30,7 +30,7 @@ async function uploadToDrive(filePath: string, fileName: string) {
   // Get credentials from Vercel env vars
   const clientEmail = process.env.GOOGLE_CLIENT_EMAIL!;
   const privateKey = (process.env.GOOGLE_PRIVATE_KEY || "").replace(/\\n/g, "\n");
-  const folderId = process.env.GOOGLE_DRIVE_FOLDER_ID!; // <- you set this in Vercel
+  
 
   const auth = new google.auth.JWT({
     email: clientEmail,
